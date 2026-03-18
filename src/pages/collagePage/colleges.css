@@ -1,0 +1,101 @@
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(15px);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+.colleges-container {
+  /* Fix: Constraints to viewport height */
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 20px 40px; /* Reduced from 80px */
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #ffffff 0%, #f4f7f9 100%);
+  
+  /* Fix: Use flex to stack title and grid vertically */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
+}
+
+.colleges-title {
+  /* Fix: Scaled down for laptop screens */
+  font-size: 32px; 
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 10px;
+  letter-spacing: -1px;
+  flex-shrink: 0; /* Prevents title from squishing */
+}
+
+/* Grid setup */
+.colleges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; 
+  /* Fix: Allow the grid to scroll if content is too tall */
+  overflow-y: auto;
+  padding-bottom: 20px;
+  /* Hide scrollbar for Chrome/Safari (optional) */
+  scrollbar-width: thin;
+}
+
+/* Glass Card Styles */
+.college-card, .link-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px; 
+  padding: 15px; 
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-image {
+  width: 100%;
+  height: 160px; /* Reduced height to fit more cards */
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 15px;
+  filter: saturate(0.9);
+  transition: filter 0.3s ease;
+}
+
+/* Fix: Tighten typography to save vertical space */
+.card-content h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.card-content p {
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+/* Adjusting Wide Card for Single Page */
+.wide {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.wide .card-image {
+  width: 40%;
+  height: 100%;
+  margin-bottom: 0;
+}
+
+/* Responsive remains similar but uses height-based adjustments if needed */
+@media (max-width: 1024px) {
+  .colleges-grid { grid-template-columns: 1fr 1fr; }
+  .wide { grid-column: span 1; flex-direction: column; }
+}

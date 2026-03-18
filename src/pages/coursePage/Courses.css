@@ -1,0 +1,125 @@
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-bg-hover: rgba(255, 255, 255, 0.6);
+  --glass-active: rgba(20, 20, 20, 0.85); 
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: blur(12px);
+  --text-main: #1a1a1a;
+  --text-muted: #4a4a4a;
+}
+
+.courses-page {
+  /* Fix: Lock to viewport height */
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 30px 40px; /* Reduced padding */
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: radial-gradient(circle at top left, #ffffff, #f0f2f5);
+  
+  /* Fix: Vertical layout control */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.section-main-title {
+  /* Fix: Scaled down to prevent overflow */
+  font-size: 42px; 
+  font-weight: 600;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 15px;
+  color: var(--text-main);
+  letter-spacing: -1px;
+  flex-shrink: 0;
+}
+
+.courses-layout {
+  display: flex;
+  gap: 40px; /* Tightened gap */
+  flex: 1; /* Takes up remaining vertical space */
+  overflow: hidden; /* Contains the scrollable accordion */
+}
+
+/* Intro Text Styling */
+.intro-column {
+  flex: 1;
+  max-width: 280px;
+  flex-shrink: 0;
+}
+
+.intro-column p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* Accordion Column */
+.accordion-column {
+  flex: 3;
+  /* Fix: Allow the accordion list to scroll if it's long */
+  overflow-y: auto;
+  padding-right: 10px; /* Space for scrollbar */
+  scrollbar-width: thin;
+}
+
+.accordion-item {
+  margin-bottom: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.category-header {
+  padding: 18px 25px; /* Thinner header */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.category-name {
+  font-size: 18px;
+  font-weight: 500;
+  min-width: 250px;
+}
+
+/* Sub-course list styling */
+.subcourse-list {
+  list-style: none;
+  /* Reduced left padding to align better on smaller screens */
+  padding: 0 25px 20px 275px; 
+  margin: 0;
+}
+
+.subcourse-list li {
+  font-size: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Custom Scrollbar for the accordion column */
+.accordion-column::-webkit-scrollbar {
+  width: 6px;
+}
+.accordion-column::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .subcourse-list { padding-left: 25px; }
+  .courses-layout { gap: 20px; }
+}
+
+@media (max-height: 700px) {
+  .section-main-title { font-size: 32px; margin-bottom: 15px; }
+  .category-header { padding: 12px 20px; }
+}

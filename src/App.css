@@ -1,0 +1,79 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden; /* Prevents double scrollbars */
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* 1. THE SNAP CONTAINER */
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* Forces vertical snapping */
+  scroll-behavior: smooth;
+}
+
+/* 2. THE SNAP SECTIONS */
+.full-page-section {
+  width: 100%;
+  height: 100vh; /* Must be exactly 100vh for the snapping effect */
+  scroll-snap-align: start; /* Tells the browser where to stop */
+  scroll-snap-stop: always; /* Prevents skipping sections on fast scroll */
+  
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+  /* Ensure content inside doesn't overflow the 100vh limit */
+  overflow-y: auto; 
+}
+
+/* Background Blobs (Fixed so they don't move with the scroll) */
+.glass-bg-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: float 20s infinite alternate ease-in-out;
+}
+
+.blob-1 { width: 600px; height: 600px; background: #002147; top: -10%; left: -5%; }
+.blob-2 { width: 500px; height: 500px; background: #cbd5e1; bottom: 5%; right: 5%; }
+.blob-3 { width: 400px; height: 400px; background: #94a3b8; top: 40%; left: 30%; }
+
+@keyframes float {
+  from { transform: translate(0, 0); }
+  to { transform: translate(100px, 50px); }
+}
+
+/* Custom Scrollbar for the Glass Look */
+.scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+.scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 33, 71, 0.2);
+  border-radius: 10px;
+}

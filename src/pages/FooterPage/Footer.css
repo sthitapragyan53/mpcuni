@@ -1,0 +1,136 @@
+:root {
+  /* Deep glass for footer */
+  --glass-footer-bg: rgba(0, 33, 71, 0.85); /* Oxford Blue with 85% opacity */
+  --glass-footer-border: rgba(255, 255, 255, 0.1);
+  --glass-footer-blur: blur(20px);
+}
+
+.university-footer {
+  /* Remove solid background and add glass properties */
+  background: var(--glass-footer-bg);
+  backdrop-filter: var(--glass-footer-blur);
+  -webkit-backdrop-filter: var(--glass-footer-blur);
+  
+  color: #ffffff;
+  padding: 100px 40px 40px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Add a subtle top border to define the edge of the glass slab */
+  border-top: 1px solid var(--glass-footer-border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Optional: Add a subtle 'sheen' to the top of the footer */
+.university-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 80px;
+}
+
+.footer-col h4 {
+  font-size: 16px; /* Slightly smaller for elegance */
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.footer-col ul li a {
+  color: rgba(255, 255, 255, 0.6); /* More muted for the glass look */
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-block; /* Allows transform */
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff;
+  transform: translateX(5px); /* Subtle slide on hover */
+}
+
+.footer-description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 320px;
+}
+
+/* Glassy Social Links */
+.social-links {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.social-links span {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.social-links span:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-legal a {
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  margin-left: 25px;
+  transition: color 0.2s;
+}
+
+.footer-legal a:hover {
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}

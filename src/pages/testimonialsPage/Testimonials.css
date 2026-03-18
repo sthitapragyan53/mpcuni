@@ -1,0 +1,168 @@
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-blur: blur(16px);
+  --accent-blue: #002147;
+}
+
+.testimonials-container {
+  padding: 100px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Soft background mesh gradient to make the glass blur visible */
+  background: radial-gradient(at 0% 0%, rgba(224, 231, 255, 0.3) 0, transparent 50%),
+              radial-gradient(at 100% 100%, rgba(245, 243, 255, 0.3) 0, transparent 50%);
+}
+
+.testimonials-main-title {
+  font-size: 64px;
+  font-weight: 700;
+  margin-bottom: 80px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 25px;
+  letter-spacing: -2px;
+}
+
+.stories-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 120px; /* More space between stories for "breathing" */
+}
+
+.story-card {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+}
+
+/* Alternate Layout */
+.story-card:nth-child(even) {
+  direction: rtl;
+}
+.story-card:nth-child(even) .story-content {
+  direction: ltr;
+}
+
+/* Glass Image Wrapper */
+.student-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  border-radius: 40px;
+  overflow: hidden;
+  /* The "frame" of the glass */
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.15), 
+              0 18px 36px -18px rgba(0, 0, 0, 0.2);
+}
+
+.student-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.story-card:hover .student-photo {
+  transform: scale(1.08);
+}
+
+/* Floating Glass Quote Badge */
+.quote-icon {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 100px;
+  height: 100px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  color: var(--accent-blue);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.story-card:nth-child(even) .quote-icon {
+  left: auto;
+  right: -30px;
+}
+
+/* Content Styling */
+.student-quote {
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* High-end glass button */
+.read-story-btn {
+  background: var(--glass-bg);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 14px 35px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.read-story-btn:hover {
+  background: var(--accent-blue);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 33, 71, 0.2);
+}
+
+/* Typography Refinement */
+.student-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin-bottom: 8px;
+}
+
+.student-details {
+  font-size: 15px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .story-card {
+    gap: 40px;
+  }
+  .student-quote {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .story-card, .story-card:nth-child(even) {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 40px;
+  }
+  .quote-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+    top: -15px;
+    left: -15px;
+  }
+}
