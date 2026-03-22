@@ -1,53 +1,109 @@
-/* Header.css */
-.navbar {
-  position: fixed;
+/* Container with Glassmorphism */
+.glass-header {
+  position: sticky;
   top: 0;
-  left: 0;
   width: 100%;
-  padding: 15px 0;
+  background: rgba(255, 255, 255, 0.75); /* Semi-transparent white */
+  backdrop-filter: blur(15px); /* The "Glass" effect */
+  -webkit-backdrop-filter: blur(15px);
+  padding: 15px 5%;
   z-index: 1000;
-  /* Frosty White Glassy Finish */
-  background: rgba(255, 255, 255, 0.7); 
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
+/* Layout for the Top Row */
+.header-main-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 50px;
+  padding-bottom: 12px;
 }
 
-.logo {
-  font-weight: 800;
-  font-size: 1.5rem;
-  color: #1a365d; /* Deep blue for contrast */
-  letter-spacing: 1px;
-}
-
-.nav-links {
+.header-left-group {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  gap: 40px;
 }
 
-.nav-item {
+.crest-img {
+  height: 65px; /* Large crest height as per image */
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.primary-nav {
+  display: flex;
+  gap: 25px;
+}
+
+.primary-nav a {
   text-decoration: none;
-  color: #4a5568;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: all 0.3s ease; /* Smooth transition for hover */
+  color: #1a1a1a;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: opacity 0.3s ease;
 }
 
-/* Bluish Shade Hover Animation */
-.nav-item:hover {
-  color: #2b6cb0; /* Primary Blue */
-  background: rgba(235, 248, 255, 0.8); /* Light blue wash */
-  transform: translateY(-2px); /* Subtle lift */
-  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.15); /* Soft blue glow */
+.primary-nav a:hover {
+  opacity: 0.6;
+}
+
+/* Search Bar Styling */
+.glass-search {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 8px 15px 8px 35px;
+  width: 260px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.glass-search:focus {
+  background: #ffffff;
+  border-color: #002147;
+  box-shadow: 0 0 0 4px rgba(0, 33, 71, 0.05);
+}
+
+/* Divider Line */
+.header-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 0 0 15px 0;
+}
+
+/* Pill Navigation Styling */
+.pill-nav-container {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  scrollbar-width: none; /* Hide scrollbar for clean look */
+}
+
+.nav-pill {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #4a4a4a;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Smooth snap animation */
+}
+
+.nav-pill:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.nav-pill.active {
+  background: #ffffff;
+  border: 1.5px solid #1a1a1a;
+  color: #1a1a1a;
 }

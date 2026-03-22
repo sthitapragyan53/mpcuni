@@ -1,101 +1,107 @@
-:root {
-  --glass-bg: rgba(255, 255, 255, 0.45);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-blur: blur(15px);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
-}
-
-.colleges-container {
-  /* Fix: Constraints to viewport height */
+.colleges-wrapper {
   height: 100vh;
-  box-sizing: border-box;
-  padding: 20px 40px; /* Reduced from 80px */
-  max-width: 1400px;
-  margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: linear-gradient(135deg, #ffffff 0%, #f4f7f9 100%);
-  
-  /* Fix: Use flex to stack title and grid vertically */
+  width: 100%;
+  background-color: #ffffff; /* Clean white background */
+  padding: 40px 5%;
   display: flex;
   flex-direction: column;
-  overflow: hidden; 
+  overflow: hidden; /* Fixes it to one page */
+  box-sizing: border-box;
 }
 
 .colleges-title {
-  /* Fix: Scaled down for laptop screens */
-  font-size: 32px; 
-  font-weight: 600;
+  font-size: 3rem;
+  font-weight: 800;
   margin-bottom: 20px;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  padding-bottom: 10px;
-  letter-spacing: -1px;
-  flex-shrink: 0; /* Prevents title from squishing */
+  letter-spacing: -1.5px;
+  color: #1d1d1f;
 }
 
-/* Grid setup */
-.colleges-grid {
+/* Bento Grid Layout */
+.colleges-bento-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px; 
-  /* Fix: Allow the grid to scroll if content is too tall */
-  overflow-y: auto;
-  padding-bottom: 20px;
-  /* Hide scrollbar for Chrome/Safari (optional) */
-  scrollbar-width: thin;
-}
-
-/* Glass Card Styles */
-.college-card, .link-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px; 
-  padding: 15px; 
-  box-shadow: var(--glass-shadow);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card-image {
-  width: 100%;
-  height: 160px; /* Reduced height to fit more cards */
-  object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 15px;
-  filter: saturate(0.9);
-  transition: filter 0.3s ease;
-}
-
-/* Fix: Tighten typography to save vertical space */
-.card-content h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
-.card-content p {
-  font-size: 13px;
-  line-height: 1.4;
-  margin-bottom: 15px;
-}
-
-/* Adjusting Wide Card for Single Page */
-.wide {
-  grid-column: span 2;
-  flex-direction: row;
-  align-items: center;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1.5fr 1fr;
   gap: 20px;
+  flex-grow: 1; /* Makes grid fill remaining screen space */
 }
 
-.wide .card-image {
-  width: 40%;
+/* Base Glass Card Style */
+.glass-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card img {
+  width: 100%;
   height: 100%;
-  margin-bottom: 0;
+  object-fit: cover;
 }
 
-/* Responsive remains similar but uses height-based adjustments if needed */
-@media (max-width: 1024px) {
-  .colleges-grid { grid-template-columns: 1fr 1fr; }
-  .wide { grid-column: span 1; flex-direction: column; }
+/* Overlaying text on images */
+.glass-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px;
+  background: linear-gradient(transparent, rgba(255,255,255,0.9));
+  color: #1d1d1f;
 }
+
+.glass-overlay h3 { margin: 0 0 10px 0; font-size: 1.4rem; }
+.glass-overlay p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 15px; }
+
+/* Buttons & Links */
+.glass-btn {
+  background: white;
+  border: 1.5px solid #1d1d1f;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.glass-btn:hover {
+  background: #1d1d1f;
+  color: white;
+}
+
+.link-item {
+  padding: 25px;
+  position: relative;
+}
+
+.border-top { border-top: 1px solid rgba(0,0,0,0.05); }
+
+/* Animations */
+.animate-fade { animation: fadeIn 0.8s ease forwards; }
+.animate-slide-up { opacity: 0; animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+

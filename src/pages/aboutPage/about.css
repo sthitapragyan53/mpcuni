@@ -1,0 +1,128 @@
+.about-section {
+  padding: 80px 40px;
+  background-color: #f9fafb; /* The "Arctic" off-white */
+  display: flex;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.about-container {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Badge & Typography */
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 24px;
+}
+
+.main-heading {
+  font-size: 48px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #6b7280;
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.btn-primary {
+  background-color: #0061ff; /* Deep Blue from image */
+  color: white;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #0061ff;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 1px solid #e5e7eb;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Stats Styling */
+.divider {
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+  margin-bottom: 40px;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.stat-item h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.stat-item p {
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+/* Image Side */
+.image-side {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-img {
+  width: 100%;
+  height: 550px;
+  object-fit: cover;
+  border-radius: 24px; /* Matches the image's soft rounded corners */
+}
+
+/* Responsive for Mobile */
+@media (max-width: 900px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .description, .stats-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .button-group {
+    justify-content: center;
+  }
+}

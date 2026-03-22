@@ -1,88 +1,128 @@
-/* Login.css */
+/* Modern Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* 1. The Winter Background - White to Soft Blue Gradient */
-.login-container {
+.container {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Soft blue-to-white winter sky look */
-  background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 50%, #bae6fd 100%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow: hidden;
-  position: relative;
+  /* Arctic Gradient: Very light blue to pure white */
+  background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+  font-family: 'Inter', "Segoe UI", sans-serif;
 }
 
-/* 2. The Frosty Glass Box */
-.login-box {
-  /* Using a very light blue-white with low opacity */
-  background: rgba(255, 255, 255, 0.35); 
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
-  
-  border-radius: 24px;
+/* The Glass Box - Frosted Arctic Style */
+.glass-box {
+  width: 400px;
   padding: 40px;
-  width: 360px;
-  text-align: center;
+  border-radius: 28px;
+  /* Ultra-subtle white glass */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   
-  /* Bright white border to look like an ice edge */
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  
-  /* Soft shadow with a hint of blue */
-  box-shadow: 0 8px 32px 0 rgba(148, 163, 184, 0.2);
-}
-
-.login-box h2 {
-  color: #1e293b; /* Darker slate blue for readability */
-  margin-bottom: 30px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-}
-
-/* 3. Input Styling - Semi-transparent white */
-.login-box input {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 18px;
-  background: rgba(255, 255, 255, 0.5);
+  /* Very faint border to define edges against the white bg */
   border: 1px solid rgba(255, 255, 255, 0.8);
+  
+  /* Soft, airy shadow */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
+/* Logo Styling */
+.logo-container {
+  margin-bottom: 15px;
+}
+
+.university-logo {
+  width: 80px; /* Adjust size as needed */
+  height: auto;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a202c;
+  letter-spacing: -0.5px;
+  margin-bottom: 5px;
+}
+
+form h2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #718096;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Inputs - Clean & Minimal */
+input {
+  width: 100%;
+  padding: 14px 16px;
+  margin: 8px 0;
   border-radius: 12px;
-  color: #334155;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #2d3748;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+input:focus {
   outline: none;
-  box-sizing: border-box;
-  transition: all 0.3s ease;
+  border-color: #cbd5e0;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(226, 232, 240, 0.4);
 }
 
-.login-box input::placeholder {
-  color: #94a3b8;
-}
-
-.login-box input:focus {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #7dd3fc; /* Light blue focus */
-  box-shadow: 0 0 0 4px rgba(186, 230, 253, 0.3);
-}
-
-/* 4. Button Styling - Deep Blue for Contrast */
-.login-box button {
+/* Button - Solid and Bold */
+button {
   width: 100%;
   padding: 14px;
-  border: none;
+  margin-top: 15px;
   border-radius: 12px;
-  background: #0ea5e9; /* Vivid winter blue */
+  border: none;
+  background: #1a202c; /* Deep slate for contrast */
   color: white;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+  transition: opacity 0.2s ease;
 }
 
-.login-box button:hover {
-  background: #0284c7;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(14, 165, 233, 0.3);
+button:hover {
+  opacity: 0.9;
 }
 
-.login-box button:active {
-  transform: translateY(0);
+/* Footer Links */
+p {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #718096;
+}
+
+span {
+  color: #2b6cb0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+span:hover {
+  text-decoration: underline;
+}
+
+/* Smooth transition for switching forms */
+.fade-in {
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -1,168 +1,262 @@
+/* Root Theme */
 :root {
-  --text-dark: #1a1a1a;
-  --border-light: #e0e0e0;
-  --bg-white: #ffffff;
-  /* Glassmorphism Variables */
-  --glass-bg: rgba(255, 255, 255, 0.45); /* Highly translucent white */
-  --glass-border: rgba(255, 255, 255, 0.18); /* Very subtle white border */
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15); /* Soft, larger shadow */
-  --glass-blur: blur(8px); /* The blurring amount for the background */
+  --bg: #f8fafc;
+  --card: rgba(255, 255, 255, 0.85);
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #4f46e5;
+  --border-radius: 28px;
 }
 
-/* Base styles remain the same... */
-.home-wrapper {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: var(--text-dark);
-  padding: 20px 40px;
-  background-color: var(--bg-white);
-  /* Optional: A very subtle gradient background can enhance the glass effect */
-  background-image: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+/* Background */
+.portal-wrapper {
+  min-height: 100vh;
+  padding: 40px;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  color: var(--text);
 }
 
-/* Header Styles remain mostly the same... */
-.main-header {
+/* Top Nav */
+.top-nav {
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border-light);
-  /* Apply glass effect to header optional, but nice for consistency */
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur); /* For Safari support */
-  border-radius: 10px;
-  padding: 15px 25px; /* Adjust padding if applying to header */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  gap: 10px;
 }
 
-.top-nav a {
-  margin: 0 15px;
-  text-decoration: none;
-  font-size: 13px;
+.mini-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.portal-name {
   font-weight: 600;
-  color: var(--text-dark);
 }
 
-.search-bar input {
-  padding: 8px 15px;
-  border-radius: 20px;
-  border: 1px solid var(--border-light);
-  /* Lighten search background for better glass look */
-  background-color: rgba(249, 249, 249, 0.7);
+/* Logout */
+.logout-pill {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* Pill Navigation - SIGNIFICANT CHANGES HERE */
-.pill-nav {
+.logout-pill:hover {
+  transform: scale(1.05);
+}
+
+/* Main Card */
+.main-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: var(--border-radius);
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  box-shadow: 
+    0 10px 40px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* Welcome Section */
+.welcome-block {
+  margin-bottom: 30px;
+}
+
+.highlight {
+  color: var(--accent);
+}
+
+/* Badges */
+.badges {
+  margin-top: 10px;
   display: flex;
   gap: 10px;
-  padding: 25px 0; /* Increased padding */
-  flex-wrap: wrap;
 }
 
-.pill {
-  /* Transparency and Blur */
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur); /* Safari support */
-  
-  /* Border and Shadow */
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05); /* Softer shadow than main containers */
-
-  /* Text & Sizing (kept similar) */
-  padding: 10px 22px; /* Slightly larger padding for better touch targets */
-  border-radius: 50px;
-  font-size: 11px;
-  font-weight: 500;
-  cursor: pointer;
-  color: var(--text-dark);
-  transition: all 0.3s ease; /* Smoother transition */
-  
-  /* Ensure text stands out on glass */
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5); 
+.status-badge {
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-.pill:hover {
-  /* More dramatic hover for effect */
-  background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.08);
-  transform: translateY(-1px); /* Sublte lift on hover */
+.attendance-badge {
+  background: #ecfdf5;
+  color: #047857;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-.pill.active {
-  background: rgba(0, 33, 71, 0.05); /* Very subtle active tint (University Blue theme) */
-  border: 1px solid rgba(0, 33, 71, 0.3);
-  font-weight: bold;
-  color: #002147; /* Example University Dark Blue */
-}
-
-/* Hero Section */
-.hero-container {
-  margin-top: 40px;
-}
-
-.hero-title {
-  font-size: 100px;
-  line-height: 0.9;
-  letter-spacing: -2px;
+/* Layout */
+.content-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
   margin-bottom: 40px;
-  font-weight: 500;
 }
 
-/* The "Boxy" Image Container - MODIFIED FOR GLASS EFFECT */
-.hero-image-box {
-  width: 100%;
-  max-width: 1200px;
-  height: 500px;
-  overflow: hidden;
-  border-radius: 30px;
-  
-  /* Glass effect applied directly to the container */
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur); /* Safari */
-  
-  /* Subtle light border to define the glass edge */
-  border: 1px solid var(--glass-border);
-  
-  /* Larger, softer shadow to give depth */
-  box-shadow: var(--glass-shadow);
-  
-  /* A slight reflective gradient over the container */
-  position: relative; 
+/* Header Block */
+.sub-text {
+  color: var(--muted);
+  font-size: 0.8rem;
 }
 
-/* Add a pseudo-element for a subtle reflection highlight */
-.hero-image-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-  border-radius: 30px; /* Match container border radius */
-  pointer-events: none; /* Let clicks pass through */
-  z-index: 1; /* Place above the image */
+.main-title {
+  margin: 5px 0 15px;
 }
 
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* ID Row */
+.transaction-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.id-pill {
+  background: #f3f4f6;
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+
+.label {
+  font-size: 0.7rem;
+  color: var(--muted);
   display: block;
-  /* Add a very slight opacity to blend image with glass background */
-  opacity: 0.95; 
-  /* Important: ensure image doesn't get blurred itself, unless desired */
-  /* backdrop-filter blurs what is BEHIND the element, so this is fine. */
 }
 
-/* Responsive adjustments (remain similar) */
+.val {
+  font-weight: 600;
+}
+
+/* Copy Button */
+.copy-btn {
+  border: none;
+  background: #e5e7eb;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.copy-btn:hover {
+  background: #d1d5db;
+}
+
+/* Attributes */
+.attribute-section h3 {
+  margin-bottom: 10px;
+}
+
+.attribute-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.attr-chip {
+  background: linear-gradient(145deg, #ffffff, #f3f4f6);
+  border-radius: 16px;
+  padding: 14px;
+  border: 1px solid #f0f0f0;
+  transition: 0.25s;
+}
+
+.attr-chip:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.attr-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.attr-val {
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* Image */
+.pfp-container img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Footer Actions */
+.action-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.nav-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  transition: 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* Glow Effect */
+.nav-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(79,70,229,0.1), transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.nav-card:hover::after {
+  opacity: 1;
+}
+
+.btn-tag {
+  background: #eef2ff;
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 50px;
+  .content-layout {
+    grid-template-columns: 1fr;
   }
-  .hero-image-box {
-    height: 300px;
+
+  .action-footer {
+    grid-template-columns: 1fr;
   }
 }

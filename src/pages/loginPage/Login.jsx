@@ -1,44 +1,89 @@
 import React, { useState } from "react";
 import "./login.css";
+import logo from "../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
-function Login({ setIsLoggedIn }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const Login = () => {
+  const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate();
+
+  const toggleForm = () => {
+    setIsLogin(!isLogin);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // simple validation
-    if (username === "admin" && password === "1234") {
-      setIsLoggedIn(true);
+    const regNo = e.target[0].value;
+    const password = e.target[1].value;
+
+    // Demo Admin Login
+    if (regNo === "admin" && password === "admin") {
+      alert("Admin Login Successful");
+      navigate("/home");
     } else {
-      alert("Invalid credentials");
+      alert("Invalid Credentials");
     }
   };
 
+  const handleSignup = (e) => {
+    e.preventDefault();
+    alert("Account Created (demo)");
+  };
+
   return (
-    <div className="login-container">
-      <form onSubmit={handleLogin} className="login-box">
-        <h2>Login</h2>
+    <div className="container">
+      <div className="glass-box">
+        {/* Logo */}
+        <div className="logo-container">
+          <img src={logo} alt="VIT Logo" className="university-logo" />
+        </div>
 
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <h1 className="title">VIT University</h1>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        {isLogin ? (
+          <form onSubmit={handleLogin} className="fade-in">
+            <h2>Student Login</h2>
 
-        <button type="submit">Login</button>
-      </form>
+            <input
+              type="text"
+              placeholder="Registration Number"
+              required
+            />
+
+            <input
+              type="password"
+              placeholder="Password"
+              required
+            />
+
+            <button type="submit">Login</button>
+
+            <p>
+              Don't have an account?{" "}
+              <span onClick={toggleForm}>Create Account</span>
+            </p>
+          </form>
+        ) : (
+          <form onSubmit={handleSignup} className="fade-in">
+            <h2>Create Account</h2>
+
+            <input type="text" placeholder="Full Name" required />
+            <input type="text" placeholder="Registration Number" required />
+            <input type="text" placeholder="Branch" required />
+            <input type="number" placeholder="Current Year" required />
+
+            <button type="submit">Sign Up</button>
+
+            <p>
+              Already have an account?{" "}
+              <span onClick={toggleForm}>Login</span>
+            </p>
+          </form>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default Login;
