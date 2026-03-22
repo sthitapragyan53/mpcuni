@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./home.css";
 import logo from "../../assets/logo.png";
 import studentPhoto from "../../assets/student-pfp.jpg";
@@ -7,136 +7,172 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
 
-  const student = {
-    name: "Sthita Pragyan Nayak",
+  const [activeTab, setActiveTab] = useState("personal");
+
+  const [formData, setFormData] = useState({
+    firstName: "Sthita",
+    lastName: "Pragyan",
+    email: "student@vit.ac.in",
     regNo: "21BCE0001",
+    branch: "ETC",
     year: "3rd Year",
-    branch: "Electronics & Telecommunication",
-    status: "Premium Member",
-    attendance: "85%"
+    location: "India",
+  });
+
+  // 🔹 Handle Input Change
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const attributes = [
-    { label: "Birthday", value: "29.12", weight: "1.6%" },
-    { label: "Year", value: student.year, weight: "Current" },
-    { label: "Branch", value: "ETC", weight: "VSSUT" },
-    { label: "Blood Grp", value: "O+", weight: "Rh+" },
-  ];
+  // 🔹 Cancel Reset
+  const handleCancel = () => {
+    alert("Changes discarded");
+    window.location.reload(); // simple reset
+  };
 
-  // 🔹 Copy Reg No
-  const handleCopy = () => {
-    navigator.clipboard.writeText(student.regNo);
-    alert("Registration number copied!");
+  // 🔹 Save
+  const handleSave = () => {
+    alert("Changes saved (demo)");
   };
 
   // 🔹 Logout
   const handleLogout = () => {
+    alert("Logged out");
     navigate("/");
   };
 
   return (
-    <div className="portal-wrapper">
-
-      {/* Top Navigation */}
-      <div className="top-nav">
-        <div className="brand">
-          <img src={logo} alt="Logo" className="mini-logo" />
-          <span className="portal-name">Student Portal</span>
+    <div className="dashboard">
+      {/* Sidebar */}
+      <aside className="sidebar">
+        <div className="logo-box">
+          <img src={logo} alt="logo" />
         </div>
 
-        <button className="logout-pill" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
+        <nav className="nav-menu">
+          <span className="active" onClick={() => navigate("/home")}>
+            Dashboard
+          </span>
 
-      <main className="main-card">
+          <span onClick={() => navigate("/result")}>Results</span>
 
-        {/* Welcome Section */}
-        <div className="welcome-block">
-          <h2>
-            Welcome back,{" "}
-            <span className="highlight">
-              {student.name.split(" ")[0]}
-            </span>{" "}
-            👋
-          </h2>
+          <span onClick={() => navigate("/fees")}>Fees</span>
 
-          <div className="badges">
-            <span className="status-badge">{student.status}</span>
-            <span className="attendance-badge">
-              Attendance: {student.attendance}
-            </span>
-          </div>
+          <span onClick={() => navigate("/subjects")}>Subjects</span>
+
+          <span onClick={() => alert("Settings page coming soon")}>
+            ⚙️ Settings
+          </span>
+        </nav>
+
+        <div className="profile-mini">
+          <img src={studentPhoto} alt="student" />
+          <span>Profile</span>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="main-area">
+        {/* Profile Card */}
+        <div className="profile-card">
+          <img src={studentPhoto} alt="student" />
+          <h3>
+            {formData.firstName} {formData.lastName}
+          </h3>
+          <p>{formData.branch}</p>
+
+          <button
+            className={activeTab === "personal" ? "active-tab" : ""}
+            onClick={() => setActiveTab("personal")}
+          >
+            Personal Info
+          </button>
+
+          <button
+            className={activeTab === "login" ? "active-tab" : ""}
+            onClick={() => setActiveTab("login")}
+          >
+            Login & Password
+          </button>
+
+          <button onClick={handleLogout}>Logout</button>
         </div>
 
-        <div className="content-layout">
+        {/* Details Section */}
+        <div className="details-card">
+          {activeTab === "personal" && (
+            <>
+              <h2>Personal Information</h2>
 
-          {/* Left Side */}
-          <div className="info-side">
+              <div className="form-grid">
+                <input
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
 
-            <div className="header-block">
-              <span className="sub-text">Student Profile</span>
-              <h1 className="main-title">{student.name}</h1>
+                <input
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
 
-              <div className="transaction-row">
-                <div className="id-pill">
-                  <span className="label">REG NO</span>
-                  <span className="val">{student.regNo}</span>
-                </div>
+                <input
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
 
-                <button className="copy-btn" onClick={handleCopy}>
-                  📋 Copy
+                <input name="regNo" value={formData.regNo} readOnly />
+
+                <input
+                  name="branch"
+                  value={formData.branch}
+                  onChange={handleChange}
+                />
+
+                <input
+                  name="year"
+                  value={formData.year}
+                  onChange={handleChange}
+                />
+
+                <input
+                  name="location"
+                  value={formData.location}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="action-buttons">
+                <button className="cancel" onClick={handleCancel}>
+                  Cancel
+                </button>
+
+                <button className="save" onClick={handleSave}>
+                  Save
                 </button>
               </div>
-            </div>
+            </>
+          )}
 
-            {/* Attributes */}
-            <div className="attribute-section">
-              <h3>Attributes</h3>
+          {/* Login Tab */}
+          {activeTab === "login" && (
+            <>
+              <h2>Login & Password</h2>
 
-              <div className="attribute-grid">
-                {attributes.map((attr, i) => (
-                  <div key={i} className="attr-chip">
-                    <div className="attr-header">
-                      <span>{attr.label}</span>
-                      <span className="percent">{attr.weight}</span>
-                    </div>
-                    <div className="attr-val">{attr.value}</div>
-                  </div>
-                ))}
+              <div className="form-grid">
+                <input placeholder="Current Password" type="password" />
+                <input placeholder="New Password" type="password" />
+                <input placeholder="Confirm Password" type="password" />
               </div>
-            </div>
-          </div>
 
-          {/* Right Side */}
-          <div className="image-side">
-            <div className="pfp-container">
-              <img src={studentPhoto} alt="Student" />
-            </div>
-          </div>
-        </div>
-
-        {/* Footer Actions */}
-        <div className="action-footer">
-
-          <button className="nav-card">
-            <span className="btn-tag">Finance</span>
-            <h4>Pending Fees</h4>
-            <p>Check your semester dues and payment history.</p>
-          </button>
-
-          <button className="nav-card">
-            <span className="btn-tag">Academic</span>
-            <h4>View Results</h4>
-            <p>Access your CGPA and semester marksheets.</p>
-          </button>
-
-          <button className="nav-card">
-            <span className="btn-tag">Analytics</span>
-            <h4>Check Score</h4>
-            <p>Performance tracking and subject analytics.</p>
-          </button>
-
+              <div className="action-buttons">
+                <button className="cancel">Cancel</button>
+                <button className="save">Update Password</button>
+              </div>
+            </>
+          )}
         </div>
       </main>
     </div>

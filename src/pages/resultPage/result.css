@@ -1,0 +1,83 @@
+/* Background */
+.result-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+/* Glass Card */
+.result-card {
+  width: 90%;
+  max-width: 900px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin-bottom: 5px;
+}
+
+/* Student Info */
+.student-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Table */
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.result-table th {
+  text-align: left;
+  padding: 12px;
+  background: #eef2ff;
+}
+
+.result-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.result-table tr:hover {
+  background: #f9fafb;
+}
+
+/* Status */
+.pass {
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* Summary */
+.summary {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #e0e7ff;
+  color: #3730a3;
+  font-size: 12px;
+}
