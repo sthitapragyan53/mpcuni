@@ -1,0 +1,151 @@
+/* Variables for easy branding */
+:root {
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --bg-gradient: linear-gradient(135deg, #eef2ff, #f8fafc);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(255, 255, 255, 0.4);
+  --text-main: #1e293b;
+  --radius: 16px;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page Layout */
+.payment-page {
+  padding: clamp(20px, 5vw, 40px);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  color: var(--text-main);
+}
+
+/* Step Progress Indicator */
+.steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.steps span {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  transition: all 0.3s ease;
+}
+
+.steps .active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Responsive Grid Layout */
+.payment-container {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Left Section: Glassmorphism effect */
+.payment-left {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+/* Right Section: Solid Summary Card */
+.payment-right {
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  height: fit-content;
+}
+
+/* Typography */
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* Buttons & Interactions */
+button {
+  margin-top: 15px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:not(.back) {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  color: #1d4ed8;
+}
+
+button:not(.back):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+  filter: brightness(0.98);
+}
+
+.back {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.back:hover {
+  background: #e2e8f0;
+}
+
+/* Payment Method Grid */
+.payment-methods {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.payment-methods button {
+  flex: 1;
+  border: 2px solid transparent;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+  .payment-container {
+    grid-template-columns: 1fr; /* Stacks on tablet/mobile */
+  }
+  
+  .payment-right {
+    order: -1; /* Summary appears on top for mobile users */
+  }
+}
+
+@media (max-width: 480px) {
+  .steps {
+    gap: 8px;
+  }
+  .steps span {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+}

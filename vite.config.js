@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/mpcuni/'   // 🔥 THIS IS REQUIRED
+  base: '/mpcuni/'   // 🔥 THIS FIXES YOUR ERROR
 })

@@ -6,6 +6,7 @@ import Home from "./pages/homePage/Home";
 import Fees from "./pages/FeesPage/Fees"; // ✅ NEW IMPORT
 import Result from "./pages/resultPage/Result";
 import Subjects from "./pages/subjectsPage/Subjects";
+import Payment from "./pages/paymentPage/Payment";
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
         <Route path="/result" element={<Result />} />
 
         <Route path="/subjects" element={<Subjects />} />
+
+        <Route path="/payment" element={<Payment />} />
 
 
 
